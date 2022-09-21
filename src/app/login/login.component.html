@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+    <div class="container">
+      <div class="image">
+        <img src="../../assets/images/university.svg" alt="university cady ayyad">
+      </div>
+      <div class="wrapper">
+        <div class="title mb-2"><span>Se connecter</span></div>
+        <form #loginform="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <!-- <i class="fas fa-user"></i> -->
+            <input type="email" name="email" class="form-control my-2" placeholder="Email" [(ngModel)] = "user.email" required pattern="^\w+@[a-zA-Z]+?\.[a-zA-Z]{2,3}$" #email="ngModel"
+            [class.is-invalid]="email.invalid && email.touched"
+            >
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <span class="text-danger" *ngIf="email.errors['required']">merci de saisir votre Email !</span>
+              <span class="text-danger" *ngIf="email.errors['pattern']">merci de saisir un Email valide !</span>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <i class="fas fa-lock"></i> -->
+            <input type="password" name="pass" class="form-control my-2" placeholder="Mot de passe" [(ngModel)] = "user.password" required #pass="ngModel"
+            [class.is-invalid]="pass.invalid && pass.touched"
+            >
+            <div *ngIf="pass.errors && (pass.invalid && pass.touched)">
+              <span class="text-danger" *ngIf="pass.errors['required']">merci de saisir votre mot de passe !</span>
+            </div>
+          </div>
+
+          <div class="my-1"><a href="#">Mot de passe oublié?</a></div>
+          <div class="row button">
+            <input [disabled]="loginform.form.invalid" type="submit" class="my-2 submit" value="connexion">
+          </div>
+          <div class="row text-center">
+            <a routerLink="register">s'inscrire</a>
+          </div>
+          <div class="text-danger text-left mt-3">{{message}}</div>
+        </form>
+      </div>
+    </div>
+
+

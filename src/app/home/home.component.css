@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+.container{
+  width: 100vw;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.container .alert{
+  width: 100%;
+  padding: .5rem;
+}
+
+.container .alert i {
+  font-size: 1.3rem;
+}
+
+.container .carts{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container .carts .cart{
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  border: .1rem solid rgba(0, 0, 0, .3);
+  padding: 1rem;
+  border-radius: .5rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.container .carts .cart p{
+  text-align: center;
+  width: 90%;
+}
+
+.container .cart button{
+  background-color: #a35119;
+  color: white;
+  cursor: pointer;
+  padding: .5rem;
+  border: none;
+  border-radius: .3rem;
+  width: 100%;
+}
+
+.container .cart button[disabled]
+{
+  background-color: #ddd;
+  background: #ddd;
+}

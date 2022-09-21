@@ -1,0 +1,90 @@
+<app-nav-bar></app-nav-bar>
+<h1 class="title">Informations sur la manifestation</h1>
+<div class="cont">
+  <div class="image">
+    <h3>soutien de type A</h3>
+    <img src="../../assets/images/logoCadyAyyad-01.jpg" alt="logo">
+    <p>l'université Cady Ayyad vous offre de bénéficier d'un soutien pour une manifestation, une mission ou un stage</p>
+  </div>
+  <form #manifestationForm="ngForm" (ngSubmit)="onSubmit()">
+    <table>
+      <tbody>
+        <tr>
+          <td>intitulé de la manifestation</td>
+          <td><input type="text" name="intitulé" id="intitulé" class="form-control" required pattern="[a-zA-Z0-9\s']{1,}" [(ngModel)]="manifestation.title" #title="ngModel" [class.is-invalid]="title.invalid && title.touched"></td>
+        </tr>
+        <tr *ngIf="(title.errors && (title.invalid && title.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="title.errors['required']">merci de saisir un titre !</span>
+              <span class="text-danger" *ngIf="title.errors['pattern']">merci de saisir un titre valide !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>lieu de la manifestation</td>
+          <td><input type="text" name="lieu" id="lieu" class="form-control" required pattern="[a-zA-Z0-9\s']{5,}" [(ngModel)]="manifestation.place" #place="ngModel" [class.is-invalid]="place.invalid && place.touched"></td>
+        </tr>
+        <tr *ngIf="(place.errors && (place.invalid && place.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="place.errors['required']">merci de saisir un lieu !</span>
+              <span class="text-danger" *ngIf="place.errors['pattern']">merci de saisir un lieu valide !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Date de début de la manifestation</td>
+          <td><input type="date" name="dateDebut" id="dateDebut" class="form-control" required [(ngModel)]="manifestation.dateStart" #dateStrat="ngModel" [class.is-invalid]="dateStrat.invalid && dateStrat.touched"></td>
+        </tr>
+        <tr *ngIf="(dateStrat.errors && (dateStrat.invalid && dateStrat.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="dateStrat.errors['required']">merci de choisir une date de debut !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>heure de début de la manifestation</td>
+          <td><input type="time" name="timeDebut" id="timeDebut" class="form-control" required [(ngModel)]="manifestation.timeStart" #timeStart="ngModel" [class.is-invalid]="timeStart.invalid && timeStart.touched"></td>
+        </tr>
+        <tr *ngIf="(timeStart.errors && (timeStart.invalid && timeStart.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="timeStart.errors['required']">merci de choisir l'heure de debut !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Date de fin de la manifestation</td>
+          <td><input type="date" name="dateFin" id="dateFin" class="form-control" required [(ngModel)]="manifestation.dateEnd" #dateEnd="ngModel" [class.is-invalid]="dateEnd.invalid && dateEnd.touched"></td>
+        </tr>
+        <tr *ngIf="(dateEnd.errors && (dateEnd.invalid && dateEnd.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="dateEnd.errors['required']">merci de choisir une date de fin !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>heure de fin de la manifestation</td>
+          <td><input type="time" name="timeFin" id="timeFin" class="form-control" required [(ngModel)]="manifestation.timeEnd" #timeEnd="ngModel" [class.is-invalid]="timeEnd.invalid && timeEnd.touched"></td>
+        </tr>
+        <tr *ngIf="(timeEnd.errors && (timeEnd.invalid && timeEnd.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="timeEnd.errors['required']">merci de choisir l'heure de fin !</span>
+          </td>
+        </tr>
+        <tr>
+          <td>montant nécessaire</td>
+          <td><input type="number" name="montant" id="montant" class="form-control" required pattern="[0-9]{1,}" [(ngModel)]="manifestation.amount" #amount="ngModel" [class.is-invalid]="amount.invalid && amount.touched"></td>
+        </tr>
+        <tr *ngIf="(amount.errors && (amount.invalid && amount.touched))" class="errors-text">
+          <td></td>
+          <td>
+              <span class="text-danger" *ngIf="amount.errors['required']">merci de saisir un montant !</span>
+              <span class="text-danger" *ngIf="amount.errors['pattern']">merci de saisir un montant valide !</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="beneificier"><input type="checkbox" name="dejaBenificie" id="dejaBenificie"> J'ai déja bénificié d'un soutien de type A</div>
+    <div class="button"><button [disabled]="manifestationForm.form.invalid" type="submit">Envoyer</button></div>
+  </form>
+</div>

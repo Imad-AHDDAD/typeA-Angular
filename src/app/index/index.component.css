@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+.home{
+  height: 100vh;
+  background: url("../../assets/images/cadiAyyad.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.overlay {
+  background: rgba(0,0,0,.85);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20rem;
+  gap: 1rem;
+ }
+
+ h1{
+  color: #fff;
+  font-size: 3.5rem;
+ }
+
+ h5{
+  color: #fff;
+  letter-spacing: .6rem;
+  text-transform: uppercase;
+ }
+
+ p{
+  color: #fff;
+  width: 70%;
+  font-size: 1.3rem;
+ }
+
+ .overlay button{
+  background-color: #fff;
+  padding: .5rem 1rem;
+  color: rgba(163,81,25,1);
+  font-weight: bold;
+  cursor: pointer;
+ }

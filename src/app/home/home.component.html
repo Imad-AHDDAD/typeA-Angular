@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="alert border-1 border-bottom">
+    <div *ngIf="!infosCompleted" class="text-center text-danger"><i class="fa-solid fa-circle-exclamation"></i> * Vous devez remplir vos données professionnelles pour pouvoir postuler et voir vos historiques ! <a routerLink="/details">Remplir</a></div>
+  </div>
+
+  <div class="carts">
+
+    <div class="cart">
+      <img src="../../assets/images/manifest-01.svg" alt="manifest">
+      <p>Vous etes un enseignant chercheur ou un doctorant, l'université Cady Ayyad vous offre de bénéficier d'un soutien pour une manifestation, une mission ou un stage</p>
+      <button disabled [disabled]="!infosCompleted" routerLink="/postuler">Posuler</button>
+    </div>
+
+    <div class="cart">
+      <img src="../../assets/images/historiques-02.svg" alt="manifest">
+      <p>Ici Vous pouvez voir toutes vos demandes de soutien de type A</p>
+      <button [disabled]="!infosCompleted" routerLink="/historiques">Voir Historiques</button>
+    </div>
+
+  </div>
+
+
+</div>

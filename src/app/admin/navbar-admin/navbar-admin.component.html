@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<mat-toolbar>
+  <span><i class="me-2 fs-2 fa-solid fa-graduation-cap"></i><a mat-icon-button class="fs-5" routerLink="/">STYPEA - Admin</a></span>
+  <div class="menu">
+    <a mat-stroked-button *ngIf="isLoggedIn" class="fs-6" (click)="logoutAdmin()">Se déconnecter</a>
+  </div>
+</mat-toolbar>

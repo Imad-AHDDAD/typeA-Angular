@@ -1,0 +1,25 @@
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<app-navbar-admin></app-navbar-admin>
+<div class="cont">
+  <div class="cart" *ngFor="let item of manifestations ; let indexOfelement=index;">
+    <h2>{{item.title}}</h2>
+    <h6>Date de début : {{item.dateStart}}</h6>
+    <h6>Date de fin : {{item.timeStart}}</h6>
+    <h6>Heure de début : {{item.dateEnd}} h</h6>
+    <h6>Heure de fin : {{item.timeEnd}} h</h6>
+    <h6>Lieu : {{item.place}}</h6>
+    <h6>Montant : {{item.amount}} Dhs</h6>
+    <h6 class="user">par : {{item.username}}</h6>
+    <h6 class="user">le : {{item.dateRequest}}</h6>
+    <h6 *ngIf="isAccepted(item)" class="text-success">Demande Acceptée</h6>
+      <h6 *ngIf="!isAccepted(item)" class="text-danger">En cours de traitement</h6>
+    <div class="mt-2 text-center">
+      <button *ngIf="!isAccepted(item)" (click)="acceptRequest(item.id)" class="btn btn-success mx-1">accepter</button>
+      <button (click)="deleteRequest(item.id)" class="btn btn-danger mx-1">supprimer</button>
+    </div>
+  </div>
+</div>
+
+

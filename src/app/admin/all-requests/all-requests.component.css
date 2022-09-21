@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  /* margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+.cont {
+  display: grid;
+  grid-template-columns: repeat(auto-fit , minmax(20rem , 1fr));
+  gap: 2rem;
+  margin: 2rem 10%;
+}
+
+.cont .cart{
+  background-color: #fff;
+  border-radius: .5rem;
+  border: .2rem solid rgba(163,81,25,.95);
+  padding: 1rem 1rem .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cont .cart h2{
+  background-color: rgba(163,81,25,.95);
+  color: #FFF;
+  padding: .3rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+.cont .cart span{
+  color: #a35119f2;
+  align-self: center;
+  margin: .5rem 0 1rem;
+  border-bottom: .05rem solid rgba(163,81,25,.95);
+}
+
+.cont .cart h6{
+  color: rgba(0, 0, 0, .8);
+  margin: .2rem 0;
+}
+
+.cont .cart .user{
+  color: #a35119f2;
+}
+
+.cont .cart .buttonsDiv{
+  margin-top: .5rem;
+  align-self: flex-end;
+  display: flex;
+  gap: .5rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cont .cart .buttonsDiv h6{
+  background-color: unset;
+  padding: .3rem .5rem;
+  border: .1rem solid rgba(163,81,25,.95);
+  border-radius: .3rem;
+}
+
+.cont .cart .buttonsDiv .buttons button{
+  color: rgba(163,81,25,.95);
+  font-size: 1.7rem;
+  background-color: unset;
+  padding: .3rem .5rem;
+  border: .1rem solid rgba(163,81,25,.95);
+  border-radius: .3rem;
+  margin: .15rem;
+}
+
+
+form table tr td{
+  padding: .5rem;
+}
+
+form table tr td:first-child{
+  text-align: right;
+}
+
+form table .errors-text td{
+  padding: 0 .5rem;
+}
+
+form table td input , form table td select{
+  width: 100%;
+  padding: .3rem .7rem;
+  border: .1rem solid #16a085;
+  border-radius: .3rem;
+  margin-top: .3rem;
+  outline: none;
+}
+
+form .button{
+  text-align: center;
+  margin: .5rem 0;
+}
+
+form .beneificier{
+  text-align: center;
+  margin-top: 2rem;
+}
+
+form button{
+  background-color: #16a085;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  align-self: flex-end;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+
+form button[disabled]
+{
+  background-color: #ddd;
+  background: #ddd;
+}
+
+.alert{
+  width: 100%;
+  padding: .5rem;
+}
+
+.alert i {
+  font-size: 1.3rem;
+}

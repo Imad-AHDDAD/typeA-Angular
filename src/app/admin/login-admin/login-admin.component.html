@@ -1,0 +1,14 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="cont">
+  <form #loginadminform="ngForm" (ngSubmit)="onSubmit()">
+    <div class="title mb-2"><span>administrateur</span></div>
+    <input type="text" name="username" id="username" placeholder="nom d'utilisateur" class="form-control" [(ngModel)]="admin.username" #username="ngModel" pattern="[a-zA-Z]{1,}" [class.is-invalid]="username.invalid && username.touched" required>
+    <div *ngIf="username.errors && (username.invalid && username.touched)">
+      <span class="text-danger" *ngIf="username.errors['required']">merci de saisir votre nom d'utilisateur !</span>
+      <span class="text-danger" *ngIf="username.errors['pattern']">le nom d'utilisateur doit avoir au moins 3 caracteres !</span>
+    </div>
+    <input type="password" name="password" placeholder="mot de passe" id="password" class="form-control" [(ngModel)]="admin.password">
+    <button type="submit">Se connecter</button>
+    <div class="text-danger text-left">{{message}}</div>
+  </form>
+</div>

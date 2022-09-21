@@ -1,0 +1,13 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <mat-toolbar>
+    <span><i class="me-2 fs-2 fa-solid fa-graduation-cap"></i><a mat-icon-button class="fs-3" routerLink="/">STYPEA</a></span>
+    <div class="menu">
+      <a mat-stroked-button *ngIf="!isLoggedIn" class="fs-6" routerLink="/">Accueil</a>
+      <a mat-stroked-button *ngIf="isLoggedIn" class="fs-6" routerLink="/home">Accueil</a>
+      <a *ngIf="isLoggedIn" class="fs-6" mat-button routerLink="/postuler">Postuler</a>
+      <a *ngIf="!isLoggedIn" class="fs-6" mat-button routerLink="/login">Se connecter</a>
+      <a mat-button *ngIf="!isLoggedIn" class="fs-6" routerLink="/register">S'inscrire</a>
+      <a *ngIf="isLoggedIn" class="fs-6" mat-button (click)="logoutUser()">Se déconnecter</a>
+      <a *ngIf="isLoggedIn" class="text-success bg-light" mat-button> <i class="me-2 fs-5 fa-solid fa-user"></i> {{username}}</a>
+    </div>
+  </mat-toolbar>

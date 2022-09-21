@@ -1,0 +1,81 @@
+<app-nav-bar></app-nav-bar>
+    <div class="container">
+
+      <div class="image">
+        <img src="../../assets/images/signup-01.svg" alt="register">
+      </div>
+
+      <div class="wrapper">
+        <div class="title mb-2"><span>Créer un compte</span></div>
+        <form #registerForm="ngForm" (ngSubmit)="register()">
+
+          <div class="row">
+            <!-- <i class="fas fa-user"></i> -->
+            <input type="text" name="firstName" class="form-control my-2" placeholder="Votre nom" [(ngModel)] = "user.firstName" required pattern="[a-zA-Z]{3,}" #first="ngModel"
+            [class.is-invalid]="first.invalid && first.touched"
+            >
+            <div *ngIf="first.errors && (first.invalid && first.touched)">
+              <span class="text-danger" *ngIf="first.errors['required']">merci de saisir votre nom !</span>
+              <span class="text-danger" *ngIf="first.errors['pattern']">le nom doit avoir au moins 3 caracteres !</span>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <i class="fas fa-user"></i> -->
+            <input type="text" name="lasttName" class="form-control my-2" placeholder="Votre prenom" [(ngModel)] = "user.lastName" required pattern="[a-zA-Z]{3,}" #last="ngModel"
+            [class.is-invalid]="last.invalid && last.touched"
+            >
+            <div *ngIf="last.errors && (last.invalid && last.touched)">
+              <span class="text-danger" *ngIf="last.errors['required']">merci de saisir votre prenom !</span>
+              <span class="text-danger" *ngIf="last.errors['pattern']">le prenom doit avoir au moins 3 caracteres !</span>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <i class="fas fa-user"></i> -->
+            <input type="email" name="email" class="form-control my-2" placeholder="Email" [(ngModel)] = "user.email" required pattern="^\w+@[a-zA-Z]+?\.[a-zA-Z]{2,3}$" #email="ngModel"
+            [class.is-invalid]="email.invalid && email.touched"
+            >
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <span class="text-danger" *ngIf="email.errors['required']">merci de saisir votre Email !</span>
+              <span class="text-danger" *ngIf="email.errors['pattern']">merci de saisir un Email valide !</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- <i class="fas fa-user"></i> -->
+            <input type="phone" name="phone" class="form-control my-2" placeholder="phone" [(ngModel)] = "user.phoneNumber" required pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" #phone="ngModel"
+            [class.is-invalid]="phone.invalid && phone.touched"
+            >
+            <div *ngIf="phone.errors && (phone.invalid && phone.touched)">
+              <span class="text-danger" *ngIf="phone.errors['required']">merci de saisir votre n° de telephone !</span>
+              <span class="text-danger" *ngIf="phone.errors['pattern']">merci de saisir un n° de telephone valide !</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- <i class="fas fa-lock"></i> -->
+            <input type="password" name="pass" class="form-control my-2" placeholder="Mot de passe" [(ngModel)] = "user.password" required pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$" #pass="ngModel"
+            [class.is-invalid]="pass.invalid && pass.touched"
+            >
+            <div *ngIf="pass.errors && (pass.invalid && pass.touched)">
+              <span class="text-danger" *ngIf="pass.errors['required']">merci de saisir un mot de passe !</span>
+              <span class="text-danger" *ngIf="pass.errors['pattern']">
+                mot de passe faible ! <br>
+                * miniscule <br>
+                * majuscule <br>
+                * chiffre <br>
+                * special caractere <br>
+                * au moins 8 caracteres <br>
+              </span>
+            </div>
+          </div>
+
+          <div class="row button">
+            <input [disabled]="registerForm.invalid" type="submit" class="my-2 submit" value="Valider">
+          </div>
+          <div class="my-2 text-center"><a routerLink="/login">S'édentifier ?</a></div>
+          <div class="text-success text-center">{{successMessage}}</div>
+          <div class="text-danger text-center">{{errorMessage}}</div>
+        </form>
+      </div>
+    </div>
+

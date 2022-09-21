@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+.title{
+  margin: 2rem 7% 0;
+  padding: .5rem;
+  text-align: center;
+  text-align: center;
+  background-color: #16a085;
+  color: white;
+}
+
+.cont{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  justify-content: center;
+  align-items: center;
+  border: .1rem solid #16a085;
+  margin: 0 7% 2rem;
+  padding: 0 3rem;
+  gap: 3rem;
+}
+
+.cont .image{
+  width: 25%;
+}
+
+.cont .image img{
+  width: 100%;
+}
+
+form{
+  border-right: .1rem solid #16a085;
+  height: 100%;
+  width: 75%;
+  padding-right: 3rem;
+}
+
+form table{
+  width: 100%;
+}
+
+form table th{
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  background-color: #16a085;
+  color: white;
+}
+
+form table tr td{
+  padding: 1rem .5rem;
+}
+
+form table .errors-text td{
+  padding: 0 .5rem;
+}
+
+form table td input , form table td select{
+  width: 100%;
+  padding: .3rem .7rem;
+  border: .1rem solid #16a085;
+  border-radius: .3rem;
+  margin-top: .3rem;
+  outline: none;
+}
+
+form table button{
+  background-color: #16a085;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  align-self: flex-end;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+form table button[disabled]
+{
+  background-color: #ddd;
+  background: #ddd;
+}

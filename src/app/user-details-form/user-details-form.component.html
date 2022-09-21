@@ -1,0 +1,103 @@
+<app-nav-bar></app-nav-bar>
+<h1 class="title">Donnees Professionnelles</h1>
+<div class="cont">
+  <form #completeinfosform="ngForm" (ngSubmit)="onSubmit()">
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="">Grade</label>
+            <select name="grade" id="grade" class="form-control" [(ngModel)]="customUserDetails.grade" required #grade="ngModel" pattern="[a-zA-Z\s]{1,}" [class.is-invalid]="grade.invalid && grade.touched">
+              <option value="">choisissez votre grade</option>
+              <option value="docteur">docteur</option>
+              <option value="master">master</option>
+            </select>
+          </td>
+          <td>
+            <label for="">Salaire</label>
+            <input type="number" name="salaire" id="salaire" class="from-control" placeholder="merci de saisir votre salaire mensuel en DH" required [(ngModel)]="customUserDetails.salary" #salary="ngModel" pattern="[0-9]{2,}" [class.is-invalid]="salary.invalid && salary.touched">
+          </td>
+        </tr>
+        <tr *ngIf="(grade.errors && (grade.invalid && grade.touched)) || (salary.errors && (salary.invalid && salary.touched)) " class="errors-text"><td>
+          <div *ngIf="(grade.errors && (grade.invalid && grade.touched))">
+            <span class="text-danger" *ngIf="grade.errors['required']">merci de choisir votre grade !</span>
+            <span class="text-danger" *ngIf="grade.errors['pattern']">merci de choisir votre grade !</span>
+          </div>
+        </td>
+          <td>
+            <div *ngIf="(salary.errors && (salary.invalid && salary.touched))">
+              <span class="text-danger" *ngIf="salary.errors['required']">merci de saisir votre salaire !</span>
+              <span class="text-danger" *ngIf="salary.errors['pattern']">merci de saisir un salaire valide !</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Etablissement</label>
+            <select name="etablissement" id="etablissement" class="form-control" [(ngModel)]="customUserDetails.etablissement" required #etabl="ngModel" pattern="[a-zA-Z\s]{3,}" [class.is-invalid]="etabl.invalid && etabl.touched">
+              <option value="">choisissez votre etablissement</option>
+              <option value="FSTg">FSTg</option>
+              <option value="Essemlalia">Essemlalia</option>
+              <option value="Essemlalia">Essemlalia</option>
+            </select>
+          </td>
+          <td>
+            <label for="">Departement</label>
+            <input type="text" name="departement" id="departement" class="from-control" placeholder="merci de saisir votre departement" required [(ngModel)]="customUserDetails.departement" #departement="ngModel" pattern="[a-zA-Z\s]{3,}" [class.is-invalid]="departement.invalid && departement.touched">
+          </td>
+        </tr>
+        <tr *ngIf="(etabl.errors && (etabl.invalid && etabl.touched)) || (departement.errors && (departement.invalid && departement.touched)) " class="errors-text"><td>
+          <div *ngIf="(etabl.errors && (etabl.invalid && etabl.touched))">
+            <span class="text-danger" *ngIf="etabl.errors['required']">merci de choisir votre etablissement !</span>
+            <span class="text-danger" *ngIf="etabl.errors['pattern']">merci de choisir votre etablissement !</span>
+          </div>
+        </td>
+          <td>
+            <div *ngIf="(departement.errors && (departement.invalid && departement.touched))">
+              <span class="text-danger" *ngIf="departement.errors['required']">merci de saisir votre departement !</span>
+              <span class="text-danger" *ngIf="departement.errors['pattern']">merci de saisir un departement valide !</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="">Gender</label>
+            <select name="gender" id="gender" class="form-control" required [(ngModel)]="customUserDetails.gender" #gender="ngModel" pattern="[a-zA-Z\s]{4,}" [class.is-invalid]="gender.invalid && gender.touched">
+              <option value="">choisissez votre sexe</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </td>
+          <td>
+            <label for="">Adresse</label>
+            <input type="text" name="adresse" id="adresse" placeholder="merci de saisir votre adresse" [(ngModel)]="customUserDetails.address" required #address="ngModel" pattern="[a-zA-Z\s]{5,}" [class.is-invalid]="address.invalid && address.touched">
+          </td>
+        </tr>
+        <tr *ngIf="(gender.errors && (gender.invalid && gender.touched)) || (address.errors && (address.invalid && address.touched)) " class="errors-text"><td>
+          <div *ngIf="(gender.errors && (gender.invalid && gender.touched))">
+            <span class="text-danger" *ngIf="gender.errors['required']">merci de choisir votre sexe !</span>
+            <span class="text-danger" *ngIf="gender.errors['pattern']">merci de choisir votre sexe !</span>
+          </div>
+        </td>
+          <td>
+            <div *ngIf="(address.errors && (address.invalid && address.touched))">
+              <span class="text-danger" *ngIf="address.errors['required']">merci de saisir votre adresse !</span>
+              <span class="text-danger" *ngIf="address.errors['pattern']">merci de saisir une adresse valide !</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button [disabled]="completeinfosform.invalid" type="submit">Valider</button>
+          </td>
+        </tr>
+      </tbody>
+      <caption class="{{classMessage}} text-left">{{message}}</caption>
+    </table>
+  </form>
+  <div class="image">
+    <img src="../../assets/images/data-01.svg" alt="data-pro">
+  </div>
+</div>

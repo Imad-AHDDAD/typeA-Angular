@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<app-nav-bar></app-nav-bar>
+<div class="alert border-1 border-bottom">
+  <div class="text-center text-success"> ici vous trouvez les demandes de soutien du type A que vous avez effectué, vous pouvez les modifier, les supprimer et imprimer leurs reçus de demande .</div>
+</div>
+<div class="cont">
+  <div class="cart" *ngFor="let item of manifestations ; let indexOfelement=index;">
+    <h2>{{item.title}}</h2>
+    <span>Demande faite le : {{item.dateRequest}}</span>
+    <h6>Date de début : {{item.dateStart}}</h6>
+    <h6>Date de fin : {{item.timeStart}}</h6>
+    <h6>Heure de début : {{item.dateEnd}} h</h6>
+    <h6>Heure de fin : {{item.timeEnd}} h</h6>
+    <h6>Lieu : {{item.place}}</h6>
+    <h6>Montant : {{item.amount}} Dhs</h6>
+    <div class="buttonsDiv">
+      <h6 *ngIf="isAccepted(item)" class="text-success">Demande Acceptée</h6>
+      <h6 *ngIf="!isAccepted(item)" class="text-danger">En cours de traitement</h6>
+      <div class="buttons">
+        <button (click)="deleteCommand(item.id)"><i class="fa-solid fa-trash-can"></i></button>
+        <button><i class="fa-solid fa-pen" (click)="open(content , indexOfelement , item.id)"></i></button>
+        <button (click)="print(item.id)"><i class="fa-solid fa-print"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: rgba(163,81,25,.95);" id="modal-basic-title">Modifier la demande</h4>
+    <button type="button" class="close" aria-label="Close" style="background-color: rgba(163,81,25,.95); border: none; color: white;" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #manifestationForm="ngForm" (ngSubmit)="modify()">
+      <table>
+        <tbody>
+          <tr>
+            <td>intitulé de la manifestation</td>
+            <td><input type="text" name="intitulé" id="intitulé" class="form-control" required pattern="[a-zA-Z0-9\s']{1,}" [(ngModel)]="manifestation.title" #title="ngModel" [class.is-invalid]="title.invalid && title.touched"></td>
+          </tr>
+          <tr *ngIf="(title.errors && (title.invalid && title.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="title.errors['required']">merci de saisir un titre !</span>
+                <span class="text-danger" *ngIf="title.errors['pattern']">merci de saisir un titre valide !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>lieu de la manifestation</td>
+            <td><input type="text" name="lieu" id="lieu" class="form-control" required pattern="[a-zA-Z0-9\s']{5,}" [(ngModel)]="manifestation.place" #place="ngModel" [class.is-invalid]="place.invalid && place.touched"></td>
+          </tr>
+          <tr *ngIf="(place.errors && (place.invalid && place.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="place.errors['required']">merci de saisir un lieu !</span>
+                <span class="text-danger" *ngIf="place.errors['pattern']">merci de saisir un lieu valide !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Date de début de la manifestation</td>
+            <td><input type="date" name="dateDebut" id="dateDebut" class="form-control" required [(ngModel)]="manifestation.dateStart" #dateStrat="ngModel" [class.is-invalid]="dateStrat.invalid && dateStrat.touched"></td>
+          </tr>
+          <tr *ngIf="(dateStrat.errors && (dateStrat.invalid && dateStrat.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="dateStrat.errors['required']">merci de choisir une date de debut !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>heure de début de la manifestation</td>
+            <td><input type="time" name="timeDebut" id="timeDebut" class="form-control" required [(ngModel)]="manifestation.timeStart" #timeStart="ngModel" [class.is-invalid]="timeStart.invalid && timeStart.touched"></td>
+          </tr>
+          <tr *ngIf="(timeStart.errors && (timeStart.invalid && timeStart.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="timeStart.errors['required']">merci de choisir l'heure de debut !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Date de fin de la manifestation</td>
+            <td><input type="date" name="dateFin" id="dateFin" class="form-control" required [(ngModel)]="manifestation.dateEnd" #dateEnd="ngModel" [class.is-invalid]="dateEnd.invalid && dateEnd.touched"></td>
+          </tr>
+          <tr *ngIf="(dateEnd.errors && (dateEnd.invalid && dateEnd.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="dateEnd.errors['required']">merci de choisir une date de fin !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>heure de fin de la manifestation</td>
+            <td><input type="time" name="timeFin" id="timeFin" class="form-control" required [(ngModel)]="manifestation.timeEnd" #timeEnd="ngModel" [class.is-invalid]="timeEnd.invalid && timeEnd.touched"></td>
+          </tr>
+          <tr *ngIf="(timeEnd.errors && (timeEnd.invalid && timeEnd.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="timeEnd.errors['required']">merci de choisir l'heure de fin !</span>
+            </td>
+          </tr>
+          <tr>
+            <td>montant nécessaire</td>
+            <td><input type="number" name="montant" id="montant" class="form-control" required pattern="[0-9]{1,}" [(ngModel)]="manifestation.amount" #amount="ngModel" [class.is-invalid]="amount.invalid && amount.touched"></td>
+          </tr>
+          <tr *ngIf="(amount.errors && (amount.invalid && amount.touched))" class="errors-text">
+            <td></td>
+            <td>
+                <span class="text-danger" *ngIf="amount.errors['required']">merci de saisir un montant !</span>
+                <span class="text-danger" *ngIf="amount.errors['pattern']">merci de saisir un montant valide !</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal-footer">
+    <button class="button" [disabled]="manifestationForm.form.invalid" type="submit">sauvegarder</button>
+  </div>
+    </form>
+  </div>
+</ng-template>
